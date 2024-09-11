@@ -15,6 +15,7 @@ class BacktestingBase:
         self.verbose = verbose
         self.units = 0
         self.trades = 0
+        
     ########################################################
     #   Methods to get/print properties of the given bar
     ########################################################
@@ -44,7 +45,7 @@ class BacktestingBase:
         print(f'{date} | net wealth = {net_wealth:.2f}')
 
     ########################################################
-    #   Methods to gplace buy/sell/close out orders
+    #   Methods to place buy/sell/close out orders
     ########################################################
   
     def place_buy_order(self, bar, amount=None, units=None):
@@ -55,8 +56,7 @@ class BacktestingBase:
         if units is None:
             units = int(amount / price)
             # units = amount / price  # alternative handling
-        self.current_balance -= (1 + self.ptc) * \
-            units * price + self.ftc # adjust balance. Acct for transact costs
+        self.current_balance -= (1 + self.ptc) * units * price + self.ftc # adjust balance. Acct for transact costs
         self.units += units # adjust units
         self.trades += 1 # track number of trades
         if self.verbose:
@@ -71,8 +71,7 @@ class BacktestingBase:
         if units is None:
             units = int(amount / price)
             # units = amount / price  # altermative handling
-        self.current_balance += (1 - self.ptc) * \
-            units * price - self.ftc # adjust balance. Acct for transact costs
+        self.current_balance += (1 - self.ptc) * units * price - self.ftc # adjust balance. Acct for transact costs
         self.units -= units # adjust units
         self.trades += 1 # track number of trades 
         if self.verbose:
