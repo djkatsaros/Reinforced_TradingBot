@@ -51,13 +51,17 @@ class Finance:
         self._prepare_data()
         
     def _get_data(self, _increment):
-        #TODO: allow data from alpha V, or web scraping.
-        self.raw = pd.read_csv(self.url, index_col=0, parse_dates=True).dropna()
         
-        if self.intraday:
-            self.raw = self.raw = self.raw.resample(_increment, label='right').last()
-            self.raw = pd.DataFrame(self.raw['Close'])
-            self.raw.columns = [self.symbol]
+        if self.uRl:
+            self.raw = pd.read_csv(self.url, index_col=0, parse_dates=True).dropna()
+        
+            if self.intraday:
+                self.raw = self.raw = self.raw.resample(_increment, label='right').last()
+                self.raw = pd.DataFrame(self.raw['Close'])
+                self.raw.columns = [self.symbol]
+        else:
+            pass
+            #TODO: allow data from alpha V, or web scraping.
     
     def _prepare_data(self):
         self.data = pd.DataFrame(self.raw[self.symbol])
