@@ -8,7 +8,11 @@ Workspace for building a trading bot based on reinforced "Q" learning and DNN fo
 
 There are several scripts. 
 
-The finance_env contains the main finance 'gym' class. It provides the environment within which the bot can make trading decisions. It includes methods to retrieve and prepare data, print the environment state, reset the environment, take a step in the environment, as well as some auxiliary methods to keep dimensions consistent.
+finance_env contains the main finance 'gym' class. It provides the environment within which the bot can make trading decisions. It includes methods to retrieve and prepare data, print the environment state, reset the environment, take a step in the environment, as well as some auxiliary methods to keep dimensions consistent.
+
+tradingbot is the 
+
+There are 3 backtesting classes, one form the base (backtestingbase) and the other two inheriting from the first. 
 
 ## References
 
