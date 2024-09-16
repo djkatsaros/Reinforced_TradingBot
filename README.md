@@ -8,7 +8,7 @@ A general setup for reinforcement learning would be an _agent_, a _set of states
 _Quality_ function _Q_, from which the algorithm derives it's name. 
 
 
-## Repo structrure
+## Repo Contents
 
 There are several scripts.  
 
