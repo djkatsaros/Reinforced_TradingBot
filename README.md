@@ -7,6 +7,11 @@ Workspace for building a trading bot based on reinforced "Q" learning and DNN fo
 A general setup for reinforcement learning would be an _agent_, a _set of states_, and a _set of actions per state_. The action on a particular state generates a _reward_ for the agent, which tries to maximize the reward. The agent is given functionality to compute future rewards so as to influence it's current decision. This involves the 
 _Quality_ function _Q_, from which the algorithm derives it's name. 
 
+The equation for the $t$th action $A_t$ and state $S_t$ is $Q(S_t,A_t) = R_{t+1} + \gamma \cdot \max_a Q(a, S_{t+1})$ where the max is over all delayed rewards given the optimal action from the current policy of the quality function $Q$. $R_{t+1}$ is the direct reward of the action $A_t$, and $0<\gamma < 1$ is the discount factor.
+$Q$ assigns a value to every _combination of state and action_. In this equation, higher values correspond to a better action from the point of view of the action $Q$.
+
+The quality function can be realized as a table for small finite systems of states. For real world financial applications however, the number of state:action combinations is so high that is better to view $Q$ as some function to be approximated. $Q$ will be approximated by a deep dense NN, and will be _updated_ through retraining steps after intervals of exploration of the environment/state space.
+
 
 ## Repo Contents
 
